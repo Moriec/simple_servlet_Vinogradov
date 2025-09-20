@@ -11,7 +11,7 @@ public class HelloServlet extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "HI";
+        message = "HI, please send me your name in Post method!";
     }
 
     @Override
@@ -28,21 +28,21 @@ public class HelloServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        out.println(boder);
+        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator())).split(",")[1].split(":")[1];
+        out.println("Your name " + boder);
     }
 
     @Override
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        out.println(boder);
+        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator())).split(",")[1].split(":")[1];
+        out.println("PUT name " + boder);
     }
 
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        out.println(boder);
+        String boder = request.getReader().lines().collect(Collectors.joining(System.lineSeparator())).split(",")[1].split(":")[1];
+        out.println("Delete name " + boder);
     }
 }
